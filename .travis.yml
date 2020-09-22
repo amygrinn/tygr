@@ -25,6 +25,6 @@ script:
 
 deploy:
   provider: script
-  script: rsync --recursive --delete dist tygr@cronpush.tygr.info:tygr
+  script: rsync --recursive --delete $TRAVIS_BUILD_DIR/dist tygr@cronpush.tygr.info:tygr
   on:
     branch: master
