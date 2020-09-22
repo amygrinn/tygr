@@ -21,8 +21,8 @@ before_deploy:
 jobs:
   include:
     - stage: quality
-      script: lint:check
-    - script: prettier:check
+      script: npm run lint:check
+    - script: npm run prettier:check
 
     - stage: build
       script: npm run build
