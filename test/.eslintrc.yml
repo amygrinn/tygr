@@ -10,3 +10,5 @@ globals:
   browser: true
 plugins:
   - chai-friendly
+rules:
+  no-invalid-this: 0
