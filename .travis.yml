@@ -26,9 +26,9 @@ before_script:
 jobs:
   include:
     - stage: test
-      env: NODE_ENV=test
       script: npm run quality:check
-    - script:
+    - env: NODE_ENV=test
+      script:
         - npm run build
         - npm test
       after_script: bash test-deploy.sh
