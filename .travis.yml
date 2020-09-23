@@ -27,9 +27,7 @@ stages:
     if: branch = master
 
 jobs:
-  allow_failures:
-    - stage: test
-      if: branch != master
+  allow_failures: [if: branch != master]
 
   include:
     - stage: test
