@@ -65,6 +65,7 @@ module.exports = {
   devtool: MINIFY ? false : 'source-map',
   devServer: {
     historyApiFallback: true,
+    clientLogLevel: 'silent',
   },
   plugins: [
     new CleanWebpackPlugin(),
