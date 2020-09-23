@@ -7,6 +7,8 @@ describe('TyGr splash page', () => {
     expect(splashPage.header).toHaveText('Hello world!'));
 
   describe('Nav', () => {
+    it('should have a link to the `home` page', () =>
+      expect(splashPage.getLink('/')).toBeVisible());
     it('should have a link to the `cronpush` page', () =>
       expect(splashPage.getLink('/cronpush')).toBeVisible());
     it('should have a link to the `thank-you` page', () =>
