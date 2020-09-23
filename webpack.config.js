@@ -10,7 +10,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 
 const { NODE_ENV } = process.env;
 
-const PROD = NODE_ENV === 'production' || NODE_ENV === 'test';
+const MINIFY = NODE_ENV === 'production' || NODE_ENV === 'test';
 const HTTP_SERVER = NODE_ENV === 'development' || NODE_ENV === 'test';
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
-  mode: PROD ? 'production' : 'development',
+  mode: MINIFY ? 'production' : 'development',
   module: {
     rules: [
       {
@@ -31,7 +31,7 @@ module.exports = {
         test: /\.s?[ac]ss$/i,
         exclude: /[\\/]node_modules[\\/]/,
         use: [
-          PROD ? MiniCssExtractPlugin.loader : 'style-loader',
+          MINIFY ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           {
             loader: 'sass-loader',
@@ -62,11 +62,11 @@ module.exports = {
       },
     },
   },
-  devtool: PROD ? false : 'source-map',
+  devtool: MINIFY ? false : 'source-map',
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin(),
-    ...(PROD
+    ...(MINIFY
       ? [
           new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
