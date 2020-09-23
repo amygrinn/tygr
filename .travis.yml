@@ -7,9 +7,10 @@ node_js:
 
 env:
   - NODE_ENV=production
+  - HOST=beta.tygr.info
 
 addons:
-  ssh_known_hosts: beta.tygr.info
+  ssh_known_hosts: $HOST
   chrome: stable
 
 # SSH Setup
