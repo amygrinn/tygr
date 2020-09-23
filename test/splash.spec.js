@@ -1,8 +1,13 @@
 const splashPage = require('./page-objects/splash.page');
 
 describe('TyGr splash page', () => {
-  it('should greet us', async () => {
-    await splashPage.open();
-    await expect(splashPage.header).toHaveText('Hello world!');
+  beforeEach(splashPage.open);
+
+  it('should greet us', () =>
+    expect(splashPage.header).toHaveText('Hello world!'));
+
+  describe('Nav', () => {
+    it('should have a link to the `cronpush` page', () =>
+      expect(splashPage.getLink('/cronpush')).toBeVisible());
   });
 });
