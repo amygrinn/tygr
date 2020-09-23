@@ -5,6 +5,9 @@ language: node_js
 node_js:
   - lts/*
 
+env:
+  - NODE_ENV=production
+
 addons:
   ssh_known_hosts: beta.tygr.info
   chrome: stable
@@ -31,8 +34,7 @@ jobs:
 
   include:
     - stage: test
-      script: npm run lint:check
-    - script: npm run prettier:check
+      script: npm run quality:check
     - script:
         - HTTP_SERVER=true npm run build
         - npm test

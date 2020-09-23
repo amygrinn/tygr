@@ -17,6 +17,9 @@
     "prettier:check": "prettier -c .",
     "prettier:fix": "prettier --write .",
     "prettier": "npm run prettier:fix",
+    "quality:check": "run-s --print-label --silent lint:check prettier:check",
+    "quality:fix": "run-p --print-label --silent lint:fix prettier:fix",
+    "quality": "npm run quality:fix",
     "updateBrowserslist": "npx browserslist@latest --update-db"
   },
   "repository": {
@@ -38,6 +41,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
+    "dotenv": "^8.2.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^0.11.2",
     "react": "^16.13.1",

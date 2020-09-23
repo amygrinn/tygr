@@ -1,4 +1,5 @@
 /** @type {import('webpack').Configuration} */
+require('dotenv').config();
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -62,9 +63,7 @@ module.exports = {
   devtool: PROD ? false : 'eval-source-map',
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      filename: HTTP_SERVER ? '404.html' : 'index.html',
-    }),
+    new HtmlWebpackPlugin(),
     ...(PROD
       ? [
           new MiniCssExtractPlugin({
@@ -74,6 +73,13 @@ module.exports = {
             analyzerMode: 'static',
             openAnalyzer: false,
             reportFilename: '../reports/build-report.html',
+          }),
+        ]
+      : []),
+    ...(HTTP_SERVER
+      ? [
+          new HtmlWebpackPlugin({
+            filename: '404.html',
           }),
         ]
       : []),
