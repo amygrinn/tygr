@@ -1,8 +1,8 @@
-const SplashPage = require('./page-objects/splash.page');
+const splashPage = require('./page-objects/splash.page');
 
 describe('TyGr splash page', () => {
   it('should greet us', async () => {
-    await SplashPage.open();
-    await expect(SplashPage.header).toHaveText('Hello world!');
+    await splashPage.open();
+    await expect(splashPage.header).toHaveText('Hello world!');
   });
 });

@@ -35,7 +35,7 @@ exports.config = {
     [
       'timeline',
       {
-        outputDir: 'dist',
+        outputDir: 'reports',
         fileName: 'test-report.html',
         screenshotStrategy: 'before:click',
       },

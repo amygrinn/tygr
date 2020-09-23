@@ -8,6 +8,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
 const PROD = process.env.NODE_ENV === 'production';
+const HTTP_SERVER = process.env.HTTP_SERVER === 'true';
 
 module.exports = {
   entry: './src/index.ts',
@@ -70,7 +71,14 @@ module.exports = {
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false,
-            reportFilename: 'build-report.html',
+            reportFilename: '../reports/build-report.html',
+          }),
+        ]
+      : []),
+    ...(HTTP_SERVER
+      ? [
+          new HtmlWebpackPlugin({
+            filename: '404.html', // Used by 'http-server' to serve SPAs
           }),
         ]
       : []),

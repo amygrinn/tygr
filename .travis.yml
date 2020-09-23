@@ -1,3 +1,4 @@
+---
 os: linux
 dist: xenial
 language: node_js
@@ -5,7 +6,7 @@ node_js:
   - lts/*
 
 addons:
-  ssh_known_hosts: cronpush.tygr.info
+  ssh_known_hosts: beta.tygr.info
   chrome: stable
 
 # SSH Setup
@@ -22,17 +23,27 @@ before_deploy:
 
 jobs:
   include:
-    # - stage: quality
-    #   script: npm run lint:check
-    # - script: npm run prettier:check
+    - stage: quality
+      script: npm run lint:check
+    - script: npm run prettier:check
 
-    - stage: build
+    - stage: test
       script:
-        - npm run build
+        - HTTP_SERVER=true npm run build
         - npm test
       deploy:
-        on:
-          branch: master
         skip_cleanup: true
         provider: script
-        script: rsync --recursive --delete $TRAVIS_BUILD_DIR/dist tygr@cronpush.tygr.info:tygr
+        script:
+          - path=/reports/${TRAVIS_PULL_REQUEST_SLUG-$TRAVIS_BRANCH}
+          - rsync --recursive --delete reports tygr@beta.tygr.info:tygr$path/
+          - echo build-report.html and test-report.html saved to https://beta.tygr.info$path
+          - echo They will be preserved for 2 weeks
+
+    - stage: deploy
+      if: branch = master
+      script: npm run build
+      deploy:
+        skip_cleanup: true
+        provider: script
+        script: rsync --recursive --delete dist tygr@beta.tygr.info:tygr

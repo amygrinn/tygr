@@ -1,5 +1,4 @@
-dist
+/dist
 node_modules
 debug.log
-/deploy_rsa
-/deploy_rsa.pub
+/reports
