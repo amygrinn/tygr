@@ -21,14 +21,21 @@ before_deploy:
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
 
+stages:
+  - test
+  - name: deploy
+    if: branch = master
+
 jobs:
+  allow_failures:
+    - stage: test
+      if: branch != master
+
   include:
-    - stage: quality
+    - stage: test
       script: npm run lint:check
     - script: npm run prettier:check
-
-    - stage: test
-      script:
+    - script:
         - HTTP_SERVER=true npm run build
         - npm test
       deploy:
@@ -37,7 +44,6 @@ jobs:
         script: bash test-deploy.sh
 
     - stage: deploy
-      if: branch = master
       script: npm run build
       deploy:
         edge: true
