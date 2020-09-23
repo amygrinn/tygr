@@ -4,9 +4,11 @@ language: node_js
 node_js:
   - lts/*
 
-# SSH Setup
 addons:
   ssh_known_hosts: cronpush.tygr.info
+  chrome: stable
+
+# SSH Setup
 before_deploy:
   - openssl aes-256-cbc
     -K $encrypted_db2095f63ba3_key
@@ -20,9 +22,9 @@ before_deploy:
 
 jobs:
   include:
-    - stage: quality
-      script: npm run lint:check
-    - script: npm run prettier:check
+    # - stage: quality
+    #   script: npm run lint:check
+    # - script: npm run prettier:check
 
     - stage: build
       script:
