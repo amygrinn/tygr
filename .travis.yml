@@ -5,9 +5,7 @@ language: node_js
 node_js:
   - lts/*
 
-env:
-  - NODE_ENV=production
-  - HOST=beta.tygr.info
+env: HOST=beta.tygr.info
 
 addons:
   ssh_known_hosts: $HOST
@@ -28,13 +26,15 @@ before_script:
 jobs:
   include:
     - stage: test
+      env: NODE_ENV=test
       script: npm run quality:check
     - script:
-        - npm run build:test
+        - npm run build
         - npm test
       after_script: bash test-deploy.sh
 
     - stage: deploy
+      env: NODE_ENV=production
       if: branch = master
       script:
         - npm run build

@@ -8,8 +8,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
-const PROD = process.env.NODE_ENV === 'production';
-const HTTP_SERVER = process.env.HTTP_SERVER === 'true';
+const { NODE_ENV } = process.env;
+
+const PROD = NODE_ENV === 'production' || NODE_ENV === 'test';
+const HTTP_SERVER = NODE_ENV === 'development' || NODE_ENV === 'test';
 
 module.exports = {
   entry: './src/index.ts',
@@ -17,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
-  mode: process.env.NODE_ENV,
+  mode: PROD ? 'production' : 'development',
   module: {
     rules: [
       {
@@ -60,7 +62,7 @@ module.exports = {
       },
     },
   },
-  devtool: PROD ? false : 'eval-source-map',
+  devtool: PROD ? false : 'source-map',
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin(),
