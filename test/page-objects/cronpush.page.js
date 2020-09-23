@@ -1,6 +1,6 @@
 const Page = require('./page');
 
-class SplashPage extends Page {
+class CronpushPage extends Page {
   get header() {
     return $('h1');
   }
@@ -10,4 +10,4 @@ class SplashPage extends Page {
   }
 }
 
-module.exports = new SplashPage();
+module.exports = new CronpushPage();
