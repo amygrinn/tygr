@@ -1,11 +1,14 @@
 #!/bin/sh
 
+host=beta.tygr.info
+
 if [ -n "$TRAVIS_PULL_REQUEST_BRANCH" ]; then
-  path=/reports/$TRAVIS_PULL_REQUEST_BRANCH
+  path=reports/$TRAVIS_PULL_REQUEST_BRANCH
 else
-  path=/reports/$TRAVIS_BRANCH
+  path=reports/$TRAVIS_BRANCH
 fi
 
-rsync --recursive --delete reports/* tygr@beta.tygr.info:tygr$path
-echo build-report.html and test-report.html saved to https://beta.tygr.info$path
+ssh tygr@$host mkdir -p tygr/$path
+rsync --recursive --delete reports/* tygr@$host:tygr/$path
+echo build-report.html and test-report.html saved to https://$host/$path
 echo They will be preserved for 2 weeks
