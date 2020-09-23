@@ -63,6 +63,9 @@ module.exports = {
     },
   },
   devtool: MINIFY ? false : 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin(),

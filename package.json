@@ -4,7 +4,7 @@
   "description": "Home page for Tyler Grinn",
   "main": "src/index.ts",
   "scripts": {
-    "start": "webpack --watch",
+    "start": "webpack-dev-server",
     "build": "webpack",
     "serve": "http-server dist --silent",
     "clean": "rimraf reports",
@@ -47,6 +47,7 @@
     "mini-css-extract-plugin": "^0.11.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
@@ -58,6 +59,7 @@
   "devDependencies": {
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "@wdio/cli": "^6.5.2",
@@ -76,6 +78,7 @@
     "prettier-plugin-organize-imports": "^1.1.1",
     "rimraf": "^3.0.2",
     "wdio-chromedriver-service": "^6.0.4",
-    "wdio-timeline-reporter": "^5.1.4"
+    "wdio-timeline-reporter": "^5.1.4",
+    "webpack-dev-server": "^3.11.0"
   }
 }

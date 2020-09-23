@@ -5,7 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "run select spec",
+      "name": "Run all specs",
+      "type": "node",
+      "request": "launch",
+      "args": ["wdio.conf.js"],
+      "cwd": "${workspaceFolder}",
+      "autoAttachChildProcesses": true,
+      "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run selected spec",
       "type": "node",
       "request": "launch",
       "args": ["wdio.conf.js", "--spec", "${file}"],
