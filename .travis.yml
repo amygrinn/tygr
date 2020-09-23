@@ -34,7 +34,7 @@ jobs:
       deploy:
         edge: true
         provider: script
-        script: bash test-deploy.sh
+        script: bash test-deploy.sh $TRAVIS_BRANCH
 
     - stage: deploy
       if: branch = master
