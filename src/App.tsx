@@ -15,6 +15,9 @@ export default () => (
     <div>
       <ul>
         <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
           <a href="/cronpush">Cron Push!</a>
         </li>
         <li>
