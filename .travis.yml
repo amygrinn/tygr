@@ -32,18 +32,14 @@ jobs:
         - HTTP_SERVER=true npm run build
         - npm test
       deploy:
-        skip_cleanup: true
+        edge: true
         provider: script
-        script:
-          - path=/reports/${TRAVIS_PULL_REQUEST_SLUG-$TRAVIS_BRANCH}
-          - rsync --recursive --delete reports tygr@beta.tygr.info:tygr$path/
-          - echo build-report.html and test-report.html saved to https://beta.tygr.info$path
-          - echo They will be preserved for 2 weeks
+        script: bash test-deploy.sh
 
     - stage: deploy
       if: branch = master
       script: npm run build
       deploy:
-        skip_cleanup: true
+        edge: true
         provider: script
-        script: rsync --recursive --delete dist tygr@beta.tygr.info:tygr
+        script: bash web-deploy.sh
