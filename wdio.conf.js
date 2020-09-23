@@ -28,7 +28,15 @@ exports.config = {
   waitforTimeout: 10000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
-  services: ['chromedriver', [TimelineService]],
+  services: [
+    [
+      'chromedriver',
+      {
+        args: ['--silent'],
+      },
+    ],
+    [TimelineService],
+  ],
   framework: 'mocha',
   reporters: [
     'spec',
