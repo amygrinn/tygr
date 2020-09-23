@@ -23,9 +23,9 @@ before_deploy:
 
 jobs:
   include:
-    - stage: quality
-      script: npm run lint:check
-    - script: npm run prettier:check
+    # - stage: quality
+    #   script: npm run lint:check
+    # - script: npm run prettier:check
 
     - stage: test
       script:
@@ -36,10 +36,10 @@ jobs:
         provider: script
         script: bash test-deploy.sh
 
-    - stage: deploy
-      if: branch = master
-      script: npm run build
-      deploy:
-        edge: true
-        provider: script
-        script: bash web-deploy.sh
+    # - stage: deploy
+    #   if: branch = master
+    #   script: npm run build
+    #   deploy:
+    #     edge: true
+    #     provider: script
+    #     script: bash web-deploy.sh

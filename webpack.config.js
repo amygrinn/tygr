@@ -62,7 +62,9 @@ module.exports = {
   devtool: PROD ? false : 'eval-source-map',
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: HTTP_SERVER ? '404.html' : 'index.html',
+    }),
     ...(PROD
       ? [
           new MiniCssExtractPlugin({
@@ -72,13 +74,6 @@ module.exports = {
             analyzerMode: 'static',
             openAnalyzer: false,
             reportFilename: '../reports/build-report.html',
-          }),
-        ]
-      : []),
-    ...(HTTP_SERVER
-      ? [
-          new HtmlWebpackPlugin({
-            filename: '404.html', // Used by 'http-server' to serve SPAs
           }),
         ]
       : []),
