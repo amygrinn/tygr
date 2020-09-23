@@ -27,6 +27,7 @@ before_script:
 jobs:
   include:
     - stage: test
+      env: NODE_ENV=test
       script: npm run quality:check
     - env: NODE_ENV=test
       script:
