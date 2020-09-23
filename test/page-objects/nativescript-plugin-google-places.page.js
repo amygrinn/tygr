@@ -6,7 +6,7 @@ class NativescriptPluginGooglePlacesPage extends Page {
   }
 
   open() {
-    return super.open('/vue-pie-chart');
+    return super.open('/nativescript-plugin-google-places');
   }
 }
 
