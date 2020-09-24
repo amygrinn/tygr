@@ -66,6 +66,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     clientLogLevel: 'silent',
+    writeToDisk: true,
   },
   plugins: [
     new CleanWebpackPlugin(),

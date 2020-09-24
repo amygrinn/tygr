@@ -4,6 +4,15 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    // `npm wtart` must be run before debugging
+    {
+      "name": "Launch Chrome",
+      "url": "http://localhost:8080",
+      "type": "chrome",
+      "request": "launch",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true
+    },
     {
       "name": "Run all specs",
       "type": "node",
