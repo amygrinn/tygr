@@ -81,7 +81,7 @@ export default function App() {
         React.createElement(p.component, {
           key: p.path,
           size: 'small',
-          position: 'active',
+          position: 'after',
           ...p.props,
         })
       )}
