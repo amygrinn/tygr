@@ -3,8 +3,8 @@ const splashPage = require('./page-objects/splash.page');
 describe('TyGr splash page', () => {
   beforeEach(splashPage.open);
 
-  it('should greet us', () =>
-    expect(splashPage.header).toHaveText('Hello world!'));
+  it('should announce itself', () =>
+    expect(splashPage.header).toHaveText('TyGr Development!'));
 
   describe('Nav', () => {
     it('should have a link to the `home` page', () =>

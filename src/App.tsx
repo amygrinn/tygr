@@ -1,76 +1,90 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Cronpush from './views/Cronpush';
-import Home from './views/Home';
-import NativescriptPluginGooglePlaces from './views/NativescriptPluginGooglePlaces';
-import NotFound from './views/NotFound';
-import SurgeSPAWebpackPlugin from './views/SurgeSPAWebpackPlugin';
-import ThankYou from './views/ThankYou';
-import VueInfiniteScroll from './views/VueInfiniteScroll';
-import VuePieChart from './views/VuePieChart';
-import VueTimePicker from './views/VueTimePicker';
+import React, { ComponentType } from 'react';
+import {
+  matchPath,
+  Redirect,
+  RouteComponentProps,
+  RouteProps,
+  useLocation,
+} from 'react-router-dom';
+import Cronpush from './components/Cronpush';
+import Home from './components/Home';
+import NativescriptPluginGooglePlaces from './components/NativescriptPluginGooglePlaces';
+import NotFound from './components/NotFound';
+import SurgeSPAWebpackPlugin from './components/SurgeSPAWebpackPlugin';
+import ThankYou from './components/ThankYou';
+import VueInfiniteScroll from './components/VueInfiniteScroll';
+import VuePieChart from './components/VuePieChart';
+import VueTimePicker from './components/VueTimePicker';
 
-export default () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/cronpush">Cron Push!</a>
-        </li>
-        <li>
-          <a href="/thank-you">thank-you!</a>
-        </li>
-        <li>
-          <a href="/vue-pie-chart">Vue Pie Chart!</a>
-        </li>
-        <li>
-          <a href="/vue-time-picker">Vue Time Picker!</a>
-        </li>
-        <li>
-          <a href="/vue-infinite-scroll">Vue Infinite Scroll!</a>
-        </li>
-        <li>
-          <a href="/surge-spa-webpack-plugin">Surge SPA Webpack Plugin!</a>
-        </li>
-        <li>
-          <a href="/nativescript-plugin-google-places">
-            Nativescript Plugin for Google Places!
-          </a>
-        </li>
-      </ul>
+type MyRouteProps = RouteProps & {
+  component: ComponentType<RouteComponentProps<any>> | ComponentType<any>;
+  props?: object;
+};
 
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/cronpush">
-          <Cronpush />
-        </Route>
-        <Route path="/thank-you">
-          <ThankYou />
-        </Route>
-        <Route path="/vue-pie-chart">
-          <VuePieChart />
-        </Route>
-        <Route path="/vue-time-picker">
-          <VueTimePicker />
-        </Route>
-        <Route path="/vue-infinite-scroll">
-          <VueInfiniteScroll />
-        </Route>
-        <Route path="/surge-spa-webpack-plugin">
-          <SurgeSPAWebpackPlugin />
-        </Route>
-        <Route path="/nativescript-plugin-google-places">
-          <NativescriptPluginGooglePlaces />
-        </Route>
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
+const routes: MyRouteProps[] = [
+  { path: '/', exact: true, component: Home },
+  { path: '/cronpush', component: Cronpush },
+  { path: '/thank-you', component: ThankYou },
+  { path: '/vue-pie-chart', component: VuePieChart },
+  { path: '/vue-time-picker', component: VueTimePicker },
+  { path: '/vue-infinite-scroll', component: VueInfiniteScroll },
+  { path: '/surge-spa-webpack-plugin', component: SurgeSPAWebpackPlugin },
+  {
+    path: '/nativescript-plugin-google-places',
+    component: NativescriptPluginGooglePlaces,
+  },
+];
+
+export default function App() {
+  const location = useLocation();
+
+  const routeIndex = routes.findIndex((r) => matchPath(location.pathname, r));
+
+  const beforePages = [...routes];
+  let afterPages: MyRouteProps[];
+  let activePage: MyRouteProps;
+
+  if (routeIndex >= 0) {
+    afterPages = beforePages.splice(routeIndex);
+    activePage = afterPages.shift()!;
+  } else if (location.pathname === '/404') {
+    afterPages = [];
+    activePage = {
+      component: NotFound,
+    };
+  } else {
+    afterPages = [];
+    activePage = {
+      component: Redirect,
+      props: {
+        to: '/404',
+      },
+    };
+  }
+
+  return (
+    <div className="router">
+      {beforePages.map((p) =>
+        React.createElement(p.component, {
+          key: p.path,
+          size: 'small',
+          position: 'before',
+          ...p.props,
+        })
+      )}
+      {React.createElement(activePage.component, {
+        size: 'large',
+        position: 'active',
+        ...activePage.props,
+      })}
+      {afterPages.map((p) =>
+        React.createElement(p.component, {
+          key: p.path,
+          size: 'small',
+          position: 'active',
+          ...p.props,
+        })
+      )}
     </div>
-  </Router>
-);
+  );
+}
