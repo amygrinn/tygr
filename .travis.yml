@@ -5,11 +5,8 @@ language: node_js
 node_js:
   - lts/*
 
-env:
-  global: HOST=beta.tygr.info
-
 addons:
-  ssh_known_hosts: beta.tygr.info
+  ssh_known_hosts: tygr.info
   chrome: stable
 
 # SSH Setup
