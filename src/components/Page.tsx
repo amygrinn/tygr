@@ -10,19 +10,22 @@ export interface PageProps extends ComponentProps<any> {
 }
 
 export default function Page(props: PageProps) {
-  const { name, path, color, size, position } = props;
+  const { name, path, color: backgroundColor, size, position } = props;
 
   return (
-    <div className="page" data-size={size} data-position={position}>
-      <div className="header" style={{ backgroundColor: color }}>
+    <div
+      className="page"
+      data-size={size}
+      data-position={position}
+      style={{ backgroundColor }}
+    >
+      <div className="header">
         <Link to={path}>
-          <h1>{name}</h1>
+          <h4>{name}</h4>
         </Link>
       </div>
-      <div className="content" style={{ borderColor: color }}>
-        {props.children}
-      </div>
-      <div className="footer" style={{ backgroundColor: color }} />
+      <div className="content">{props.children}</div>
+      <div className="footer" />
     </div>
   );
 }
