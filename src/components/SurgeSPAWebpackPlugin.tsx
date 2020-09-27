@@ -8,6 +8,6 @@ export default (props: SurgeSPAWebpackPluginProps) => (
     {...props}
     name="Surge SPA Webpack Plugin!"
     path="/surge-spa-webpack-plugin"
-    color="orange"
+    className="surge-spa-webpack-plugin"
   />
 );

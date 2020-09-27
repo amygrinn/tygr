@@ -8,6 +8,6 @@ export default (props: VueTimePickerProps) => (
     {...props}
     name="Vue Time Picker!"
     path="/vue-time-picker"
-    color="green"
+    className="vue-time-picker"
   />
 );

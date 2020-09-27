@@ -8,6 +8,6 @@ export default (props: VueAsyncFilterProps) => (
     {...props}
     name="Vue Async Filter!"
     path="/vue-async-filter"
-    color="gold"
+    className="vue-async-filter"
   />
 );

@@ -8,6 +8,6 @@ export default (props: VueInfiniteScrollProps) => (
     {...props}
     name="Vue Infinite Scroll!"
     path="/vue-infinite-scroll"
-    color="pink"
+    className="vue-infinite-scroll"
   />
 );

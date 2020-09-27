@@ -4,17 +4,24 @@ import { Link } from 'react-router-dom';
 export interface PageProps extends ComponentProps<any> {
   name: string;
   path: string;
-  color: string;
+  className: string;
   size: 'small' | 'large';
   position: 'before' | 'active' | 'after';
 }
 
 export default function Page(props: PageProps) {
-  const { name, path, color: backgroundColor, size, position } = props;
+  const {
+    className,
+    color: backgroundColor,
+    name,
+    path,
+    position,
+    size,
+  } = props;
 
   return (
     <div
-      className="page"
+      className={className + ' page'}
       data-size={size}
       data-position={position}
       style={{ backgroundColor }}

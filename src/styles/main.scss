@@ -1,10 +1,26 @@
-html,
-body,
-#app {
+body {
   margin: 0;
-  background-color: $background;
-  height: 100%;
+  background-color: $primary;
 }
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@import 'elements/font';
+@import 'elements/link';
 
 @import 'components/router';
 @import 'components/page';
+@import 'components/home';
+@import 'components/cronpush';
+@import 'components/thank-you';
+@import 'components/vue-async-filter.scss';
+@import 'components/vue-pie-chart.scss';
+@import 'components/vue-time-picker.scss';
+@import 'components/vue-infinite-scroll.scss';
+@import 'components/surge-spa-webpack-plugin.scss';

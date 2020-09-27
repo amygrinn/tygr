@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&family=Montserrat&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+button {
+  font-family: 'Baskervville', serif;
+}
+
+p,
+span,
+a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+$text-dark: rgba(0, 0, 0, 0.8);
+$text-light: rgba(255, 255, 255, 0.8);
