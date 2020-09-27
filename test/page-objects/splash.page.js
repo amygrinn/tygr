@@ -1,9 +1,5 @@
 const Page = require('./page');
 
-class SplashPage extends Page {
-  getLink(href) {
-    return $(`a[href='${href}']`);
-  }
-}
+class SplashPage extends Page {}
 
 module.exports = new SplashPage();
