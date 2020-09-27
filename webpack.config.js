@@ -2,6 +2,7 @@
 require('dotenv').config();
 const path = require('path');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -72,6 +73,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: ['src/under-construction.html'],
+    }),
     ...(MINIFY
       ? [
           new MiniCssExtractPlugin({
