@@ -8,10 +8,10 @@ import {
 } from 'react-router-dom';
 import Cronpush from './components/Cronpush';
 import Home from './components/Home';
-import NativescriptPluginGooglePlaces from './components/NativescriptPluginGooglePlaces';
 import NotFound from './components/NotFound';
 import SurgeSPAWebpackPlugin from './components/SurgeSPAWebpackPlugin';
 import ThankYou from './components/ThankYou';
+import VueAsyncFilter from './components/VueAsyncFilter';
 import VueInfiniteScroll from './components/VueInfiniteScroll';
 import VuePieChart from './components/VuePieChart';
 import VueTimePicker from './components/VueTimePicker';
@@ -25,14 +25,11 @@ const routes: MyRouteProps[] = [
   { path: '/', exact: true, component: Home },
   { path: '/cronpush', component: Cronpush },
   { path: '/thank-you', component: ThankYou },
+  { path: '/vue-async-filter', component: VueAsyncFilter },
   { path: '/vue-pie-chart', component: VuePieChart },
   { path: '/vue-time-picker', component: VueTimePicker },
   { path: '/vue-infinite-scroll', component: VueInfiniteScroll },
   { path: '/surge-spa-webpack-plugin', component: SurgeSPAWebpackPlugin },
-  {
-    path: '/nativescript-plugin-google-places',
-    component: NativescriptPluginGooglePlaces,
-  },
 ];
 
 export default function App() {

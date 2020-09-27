@@ -21,9 +21,5 @@ describe('TyGr splash page', () => {
       expect(splashPage.getLink('/vue-infinite-scroll')).toBeVisible());
     it('should have a link to the `surge-spa-webpack-plugin` page', () =>
       expect(splashPage.getLink('/surge-spa-webpack-plugin')).toBeVisible());
-    it('should have a link to the `nativescript-plugin-google-places` page', () =>
-      expect(
-        splashPage.getLink('/nativescript-plugin-google-places')
-      ).toBeVisible());
   });
 });

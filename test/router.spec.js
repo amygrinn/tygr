@@ -19,6 +19,12 @@ describe('Router', () => {
     return expect(thankYouPage.header).toHaveText('thank-you!');
   });
 
+  it('should have a `vue-async-filter` page', async function () {
+    const vueAsyncFilterPage = new Page('/vue-async-filter');
+    await vueAsyncFilterPage.open();
+    return expect(vueAsyncFilterPage.header).toHaveText('Vue Async Filter!');
+  });
+
   it('should have a `vue-pie-chart` page', async function () {
     const vuePieChartPage = new Page('/vue-pie-chart');
     await vuePieChartPage.open();
@@ -44,16 +50,6 @@ describe('Router', () => {
     await surgeSPAWebpackPluginPage.open();
     return expect(surgeSPAWebpackPluginPage.header).toHaveText(
       'Surge SPA Webpack Plugin!'
-    );
-  });
-
-  it('should have a `nativescript-plugin-google-places` page', async function () {
-    const nativescriptPluginGooglePlacesPage = new Page(
-      './nativescript-plugin-google-places'
-    );
-    await nativescriptPluginGooglePlacesPage.open();
-    return expect(nativescriptPluginGooglePlacesPage.header).toHaveText(
-      'Nativescript Plugin for Google Places!'
     );
   });
 });
