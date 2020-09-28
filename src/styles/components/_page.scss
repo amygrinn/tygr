@@ -28,6 +28,21 @@
     border-bottom-left-radius: 32px;
     margin-left: 32px;
     border-top-left-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .description {
+      background-color: white;
+      margin: 16px;
+      max-width: 300px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      box-shadow: 3px 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
