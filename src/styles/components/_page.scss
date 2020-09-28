@@ -8,13 +8,13 @@
   .header,
   .footer {
     flex-shrink: 1;
-    height: 32px;
+    height: 28px;
 
     a {
       display: flex;
       height: 100%;
       align-items: center;
-      padding-left: 64px;
+      padding-left: 32px;
 
       h4 {
         margin: 0;
