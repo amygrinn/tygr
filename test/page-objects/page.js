@@ -8,10 +8,6 @@ module.exports = class Page {
     return browser.url(this.path || '');
   }
 
-  get header() {
-    return $(`[data-position='active'] h4`);
-  }
-
   getLink(href) {
     return $(`a[href='${href}']`);
   }
